@@ -28,7 +28,7 @@ s3 = [1,1,1; 0,1,6];
 
 
 % Assemble siffnes matrix A and load vector b
-[A b t] = Truss_System(n, e, f, s);
+[A b t] = truss_system(n, e, f, s);
 
 if t == 1
     % solve for truss forces and supports

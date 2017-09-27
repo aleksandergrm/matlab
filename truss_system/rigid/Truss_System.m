@@ -1,7 +1,7 @@
 % Author: aleksander.grm@fpp.uni-lj.si
 % Date: 20/09/2017
 
-function [ A b t ] = Truss_System( n, e, f, s )
+function [ A b t ] = truss_system( n, e, f, s )
 % Truss_System fills the matrix A and vector b based on 
 %
 %  n - nodes

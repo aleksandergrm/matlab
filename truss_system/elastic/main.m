@@ -3,7 +3,7 @@
 
 % --- Material Properties ---
 S = 1e-4;
-E = 2e8;
+E = 1e8;
 
 % --- Example 01 ---
 n1 = [0,0; 0,1; 1,0];
@@ -16,7 +16,7 @@ f1 = [500,0,2];
 n2 = [0,0; 2,0; 4,0; 1,1; 3,1; 2,2];
 e2 = [1,2; 2,3; 1,4; 2,4; 2,5; 3,5; 4,5; 4,6; 5,6];
 f2 = [0,-1000,6];
-s2 = [1,1,1; 0,1,3];
+s2 = [1,1,1; 1,1,3];
 n = n2; e =e2; s = s2; f = f2;
 
 % --- Example 03 ---
@@ -62,12 +62,12 @@ for i=1:m
     f(id) = fp(i);
 end
 
-fprintf('\n\n======== Elongations ========\n')
+fprintf('\n\n======== Node translations ========\n')
 for i = 1:size(n,1)
     fprintf('u(%d): x = %-10.3g\t y = %-10.3g\n', i, u(2*i-1), u(2*i));
 end
 
-fprintf('\n======== Forces ========\n')
+fprintf('\n======== Truss support forces ========\n')
 for i = 1:size(n,1)
     fprintf('f(%d): x = %-10.3g\t y = %-10.3g\n', i, f(2*i-1), f(2*i));
 end
