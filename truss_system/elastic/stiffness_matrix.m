@@ -2,9 +2,9 @@
 % Date: 20/09/2017
 
 function K = stiffness_matrix( n, e, SE )
-% stiffness_matrix: fills the element in stiffness matrix
+% stiffness_matrix: fills the elements in stiffness matrix
 %
-%  Fills and permuts stiffness matrix
+%  Fills elements of local/global stiffness matrix
 
     eDim = size(e,1);
     nDim = size(n,1);

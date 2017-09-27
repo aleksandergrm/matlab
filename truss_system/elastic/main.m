@@ -2,9 +2,10 @@
 % Date: 20/09/2017
 
 % --- Material Properties ---
-S = 1e-4;
-E = 1e8;
+S = 1e-4; % element cross section
+E = 1e8;  % Young's modulus
 
+%%
 % --- Example 01 ---
 n1 = [0,0; 0,1; 1,0];
 e1 = [1 2; 1 3; 2 3];
@@ -27,9 +28,9 @@ e3 = [1,2; 2,3; 3,4; 4,5; 5,6;...
 f3 = [0,-500,2; 0,-300,3; 0,-300,4; 0,-500,5];
 s3 = [1,1,1; 0,1,6];
 %n = n3; e =e3; s = s3; f = f3;
+%%
 
-
-% --- Start FEM analysis
+% --- Start FEM analysis ---
 K = stiffness_matrix( n, e, S*E);
 b = load_vector(n, f);
 
@@ -48,7 +49,9 @@ Kpp = K(p-m+1:p, q-m+1:q);
 
 uu = linsolve(Kuu, b(1:p-m));
 fp = Kpu*uu;
+%%
 
+% expose results to regular organized form
 u = zeros(q,1);
 f = zeros(p,1);
 
@@ -62,6 +65,7 @@ for i=1:m
     f(id) = fp(i);
 end
 
+% print results
 fprintf('\n\n======== Node translations ========\n')
 for i = 1:size(n,1)
     fprintf('u(%d): x = %-10.3g\t y = %-10.3g\n', i, u(2*i-1), u(2*i));
@@ -72,6 +76,7 @@ for i = 1:size(n,1)
     fprintf('f(%d): x = %-10.3g\t y = %-10.3g\n', i, f(2*i-1), f(2*i));
 end
 
+% show results
 plot_ts(n, e, u)
 
 
