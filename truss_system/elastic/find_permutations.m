@@ -28,33 +28,26 @@ function [ p, m ] = find_permutations( n, s)
     m = nnz(sp);
     i = 1;
     last = pDim;
+    
     while i <= last
-        %fprintf('i=%d, last=%d, sp(%d)=%d, sp(%d)=%d\n', i, last, i, sp(i), last, sp(last));
         if sp(i) == 1
-            %fprintf('sp(%d)=1\n',i);
             if sp(last) == 0
-                %fprintf('found 0: i=%d, last=%d\n', i, last);
                 p(i) = last;
                 p(last) = i;
-                %fprintf('   -> set new value %d <-> %d\n', i, last);
                 last = last - 1;
             else
-                %fprintf('found 1: i=%d, last=%d, searching ...\n', i, last);
                 while sp(last) == 1
                     p(last) = last;
                     last = last - 1;
                     
-                    %fprintf('   -> i=%d, last=%d\n', i, last);
                     if sp(last) == 0
                         p(i) = last;
                         p(last) = i;
-                        %fprintf('   -> set new value %d <-> %d\n', i, last);
                         last = last - 1;
                     end  
                 end
             end
         else
-            %fprintf('sp(%d)=0\n',i);
             p(i) = i;
         end
         
